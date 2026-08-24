@@ -3,24 +3,18 @@
   <head>
     <title>Horaires/Résultats CO Vallée de l'Ourche 2026 </title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.6, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" /> 
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" /> -->   
+    <!--<meta name="viewport" content="width=device-width, initial-scale=0.8, minimum-scale=0.6, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.6, maximum-scale=3.0, user-scalable=yes, viewport-fit=cover" />    
     <meta name="author" content="erikpier"> 
-  <script>
-      // Masque la barre d'adresse du navigateur mobile une fois la page chargée.
-    window.addEventListener('load', function(e) {
-    setTimeout(function() { window.scrollTo(0, 1); }, 1);
-    }, false);
-  </script>
   <style>
-  /* Désactive les calculs de padding/border en dehors de la largeur définie */
+    /* Désactive les calculs de padding/border en dehors de la largeur définie */
   *, *::before, *::after {
     box-sizing: border-box;
   }
 
   /* --- STICKY GÉOMÉTRIE PARFAITE --- */
   :root {
-    --line1-height: 34px; /* Ajustez selon la hauteur réelle de votre ligne 1 */
+    --line1-height: 30px; /* Ajustez selon la hauteur réelle de votre ligne 1 */
 
     --bg-header-1: #1b13b0;  /* Couleur de fond de la 1ère ligne d'en-tête */
     --bg-header-2: #254e75;
@@ -43,7 +37,7 @@
     --table:#ffffff;
     --entete:#d8eaf8;
     --entete-texte:#222;     
-  
+    
     --ligne1:#252a30;
     --ligne2:#4a525d;
     --survol:#308f5ff2;
@@ -51,10 +45,10 @@
     --border1:#b9c6d2;
     --border2: 2px solid #b9c6d2;
     --border3: 3px solid #b9c6d2;
-
+    
     --ombre:0 2px 8px rgba(0,0,0,.12);  
   }
-
+  
   html, body {
     width: 100%;
     margin: 0;
@@ -67,7 +61,7 @@
     background:var(--bg-fond);
     font-size: 13px;
   }
-
+  
   /* Figer le titre h1 en haut */
   h1 {
     background: var(--bg-fond); /* Fond pour éviter la transparence */        
@@ -80,7 +74,7 @@
   }    
   
   h2 { margin: 0 0 12px 0; font-size: 1.1rem; color:var(--texte2); } 
-
+  
   /* 1. LE CONTENEUR AVEC EFFET MAISON (Pour le fun) */
   .table-container {
     width: 100%;
@@ -95,7 +89,7 @@
     will-change: scroll-position; /* Prépare le navigateur au défilement */
     transform: translateZ(0);     /* Force le rendu par la carte graphique (GPU) */   
   }
-
+  
   table {
     border-collapse: separate; /* Obligatoire pour éviter les bugs de borders sticky */
     border-spacing: 0;
@@ -106,13 +100,13 @@
     width: max-content;
     min-width: 900px !important; 
   }
-
+  
   th, td {
     box-sizing: border-box !important;
     padding: 7px 10px;
     border-right: 1px solid var(--border1);
     border-bottom: 1px solid var(--border1);
-   /* background-color: #efd2ee;  Indispensable pour éviter la transparence au défilement */
+    /* background-color: #efd2ee;  Indispensable pour éviter la transparence au défilement */
     white-space: nowrap; /* Empêche le texte de sauter à la ligne involontairement */
     color: var(--texte3);
     font-weight: 500;    
@@ -124,7 +118,7 @@
     /* height: 100%; */
     /* text-align: center; */ /* Aligne le texte au milieu si nécessaire */
   }
-
+  
   /* Ligne 1 */ 
   .sticky-row-1 th {
     position: sticky;
@@ -133,7 +127,7 @@
     /*background-color: var(--bg-header-1);*/
     color: var(--text-header-1);
     font-weight: 500;
-
+    
   }
   .sticky-row-1 th.sticky-parent {
     left: 0;
@@ -150,7 +144,7 @@
     color: var(--text-header-1);
     font-weight: 500;
   }
-
+  
   /* CONFIGURATION STRICTE DES 3 PREMIÈRES COLONNES (En-tête et Corps) */
   .col-1, tbody td:nth-child(1) {
     position: sticky; left: 0;
@@ -165,7 +159,7 @@
     min-width: var(--col2-width);
     max-width: var(--col2-width);
   }
-
+  
   .col-3, tbody td:nth-child(3) {
     position: sticky !important;
     /*left: 231px;*/
@@ -176,7 +170,7 @@
     max-width: var(--col3-width);
     /*border-right: 1px solid var(--border1);*/
   } 
-
+  
   /* Gestion fine des z-index pour éviter les superpositions bizarres */
   .sticky-row-1 .col-1, .sticky-row-1 .col-2, .sticky-row-1 .col-3 { z-index: 30; background: var(--bg-header-1);color: var(--text-header-1); }
   .sticky-row-2 .col-1, .sticky-row-2 .col-2, .sticky-row-2 .col-3 { z-index: 25; background: var(--bg-header-1);color: var(--text-header-1); }
@@ -187,15 +181,15 @@
     min-width: 150px; /* Largeur par défaut pour chaque colonne dynamique */
     background-color: var(--bg-header-2); /* Couleur de fond pour les colonnes défilantes */
     border-right: var(--border3);
-
+    
     }
-
+    
 /* --- 1. ALTERNANCE DE COULEUR (À partir de la 4ème colonne) --- */
 /* Lignes impaires */
   tbody tr:nth-child(odd) td:not(:nth-child(-n+3)) {
     background: var(--ligne1);
   }
-
+  
   /* Lignes paires */
   tbody tr:nth-child(even) td:not(:nth-child(-n+3)) {
     background: var(--ligne2);
@@ -223,17 +217,17 @@
     }
   }
     @page {
-    size: landscape;
+      size: landscape;
     width: 100%;
     }
     @media screen and (orientation: portrait) {
       #toolbar {
     width: 100%;
-      }      
+  }      
     }
     @media screen and (orientation: landscape) {
       #toolbar{
-    min-height: 100%;
+        min-height: 100%;
     width: 100%;
   }  
     }
@@ -258,12 +252,12 @@ tbody td:nth-child(n+19):nth-child(-n+21) {
   color: #ffffff !important;
   font-weight: 700 !important;
   font-size: 1.0rem !important;
-}
-*/
+  }
+  */
 
-/* 1. Encadrement du titre Ligne 1 (colspan="5") */
-/* Si c'est le 3ème <th> de la ligne 1 */
-thead tr:nth-child(1) th:nth-child(2) {
+  /* 1. Encadrement du titre Ligne 1 (colspan="5") */
+  /* Si c'est le 3ème <th> de la ligne 1 */
+    thead tr:nth-child(1) th:nth-child(2) {
   border-left: var(--border2) !important;
   border-right: var(--border3) !important;
 }
@@ -316,6 +310,12 @@ tbody tr td:nth-child(38) {
 
 
 </style>
+<script>
+    // Masque la barre d'adresse du navigateur mobile une fois la page chargée.
+  window.addEventListener('load', function(e) {
+  setTimeout(function() { window.scrollTo(0, 1); }, 1);
+  }, false);
+</script>
 </head>
 <body>
 <div id="body">     
