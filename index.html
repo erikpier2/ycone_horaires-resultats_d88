@@ -57,7 +57,7 @@
     overflow: hidden;
     font-family:Segoe UI, Arial, Helvetica, sans-serif; 
     /* Autorise tous les gestes natifs du navigateur (zoom + scroll) */
-    touch-action: auto !important; 
+    touch-action: manipulation !important; 
     background:var(--bg-fond);
     font-size: 13px;
   }
@@ -80,6 +80,7 @@
     width: 100%;
     overflow: auto !important; /* Déclenche les défilements H/V */
     max-height: 65vh; /* Garde de l'espace sur mobile pour défiler la page globale */
+    flex-grow: 1;       /* Remplit tout l'espace vertical disponible */
     /*border: 1px solid var(--bordure);*/
     /* Active le défilement matériel fluide tactile */
     -webkit-overflow-scrolling: touch;
@@ -98,7 +99,8 @@
     border-left: 1px solid var(--border);
     /* INDISPENSABLE pour les colonnes variables : la table s'adapte à son contenu */
     width: max-content;
-    min-width: 900px !important; 
+    min-width: 900px !important;
+    margin-bottom: 15px !important; /* Crée l'espace de décalage en bas du tableau */ 
   }
   
   th, td {
@@ -231,6 +233,20 @@
     width: 100%;
   }  
     }
+/* --- ADAPTATION SMARTPHONE EN MODE PAYSAGE --- */
+  @media screen and (max-height: 500px) and (orientation: landscape) {
+  
+  .table-container {
+    /* On réduit la hauteur max pour laisser respirer le bas de la page */
+    max-height: 65vh !important; 
+    margin-bottom: 15px !important; /* Marge externe sous le conteneur */
+    }
+
+  /* Espace d'aisance supplémentaire en bas du body pour le défilement global */
+  body {
+    padding-bottom: 20px !important;
+    }
+  }    
   /* --- 1. ENTÊTE LIGNE 1 : 7ᵉ ou 8ᵉ cellule (avec colspan) --- *//*
 thead tr:nth-child(1) th:nth-child(7) {
   color: #0d6efd !important;             /* Couleur du texte (ex: Rouge) *//*
