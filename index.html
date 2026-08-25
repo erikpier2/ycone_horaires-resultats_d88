@@ -14,7 +14,7 @@
 
   /* --- STICKY GÉOMÉTRIE PARFAITE --- */
   :root {
-    --line1-height: 30px; /* Ajustez selon la hauteur réelle de votre ligne 1 */
+    --line1-height: 32px; /* Ajustez selon la hauteur réelle de votre ligne 1 */
 
     --bg-header-1: #1b13b0;  /* Couleur de fond de la 1ère ligne d'en-tête */
     --bg-header-2: #254e75;
@@ -257,7 +257,10 @@ tbody td:nth-child(n+19):nth-child(-n+21) {
 
   /* 1. Encadrement du titre Ligne 1 (colspan="5") */
   /* Si c'est le 3ème <th> de la ligne 1 */
-    thead tr:nth-child(1) th:nth-child(2) {
+thead tr:nth-child(1) th {
+  border-top: var(--border2);
+}    
+thead tr:nth-child(1) th:nth-child(2) {
   border-left: var(--border2) !important;
   border-right: var(--border3) !important;
 }
